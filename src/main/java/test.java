@@ -20,6 +20,13 @@ public class test {
         }
 
         for (File file : destination.listFiles()){
+            //System.out.println(file.getName() + " --- " + file.length());
+
+            if(file.length() < 200000){
+                file.delete();
+                continue;
+            }
+
             file.renameTo(new File(file.toPath() + ".jpg"));
         }
     }
