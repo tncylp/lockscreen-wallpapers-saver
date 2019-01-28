@@ -16,16 +16,15 @@ public class test {
         }
 
         for (File file : source.listFiles()){
+            if(file.length() < 200000){
+                continue;
+            }
+
             FileUtils.copyFileToDirectory(file,destination);
         }
 
         for (File file : destination.listFiles()){
             //System.out.println(file.getName() + " --- " + file.length());
-
-            if(file.length() < 200000){
-                file.delete();
-                continue;
-            }
 
             file.renameTo(new File(file.toPath() + ".jpg"));
         }
